@@ -29,29 +29,7 @@ set expandtab
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
 
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-	  " Use Ag over Grep
-	    set grepprg=ag\ --nogroup\ --nocolor
-
-	      " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-	        let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-		  " ag is fast enough that CtrlP doesn't need to cache
-		    let g:ctrlp_use_caching = 0
-	    endif
-
 set relativenumber
-
-set t_Co=256
-colorscheme sexy-railscasts
-
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-" exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
-let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
-
-" Index ctags from any project, including those outside Rails
-map <Leader>ct :!ctags -R .<CR>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
@@ -61,12 +39,6 @@ nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
-
-" vim-rspec mappings
-nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>s :call RunNearestSpec()<CR>
-nnoremap <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
 
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<space>
