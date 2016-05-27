@@ -31,6 +31,11 @@ set list listchars=tab:»·,trail:·
 
 set relativenumber
 
+set t_Co=256
+ 
+" Index ctags from any project, including those outside Rails
+map <Leader>ct :!ctags -R .<CR>
+
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
@@ -39,6 +44,12 @@ nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
+
+" vim-rspec mappings
+nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
+nnoremap <Leader>s :call RunNearestSpec()<CR>
+nnoremap <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<space>
